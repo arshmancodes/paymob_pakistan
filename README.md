@@ -82,4 +82,6 @@ Change cvv to 111 or expiry year to 20
 
 > :pushpin: Note :
 > 
+> Visit https://paymob.pk to get your PayMob account for accepting Digital Payments on your Flutter Application.
 > May be you have to contact paymob support to activate your test card 
+

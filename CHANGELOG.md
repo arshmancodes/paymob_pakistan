@@ -6,3 +6,6 @@
 
 ## 1.0.2
 - Improved Imports
+
+## 1.0.3
+- Improved the Documentation and mentioned the Paymob Registration link.

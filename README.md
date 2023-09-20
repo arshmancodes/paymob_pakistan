@@ -9,14 +9,16 @@ Easily accept Jazzcash/Easypaisa/Card Payments through Paymob in your Flutter ap
 Add this to `dependencies` in your app's `pubspec.yaml`
 
 ```yaml
-paymob_payment : latest_version
+paymob_pakistan : latest_version
 ```
 
 ## :hammer: Initialization
 
 ```dart
-PaymobPayment.instance.initialize(
+PaymobPakistan.instance.initialize(
   apiKey: "", // from dashboard Select Settings -> Account Info -> API Key 
+  jazzcashIntegrationId: 123123, // From Dashboard select Developers -> Payment Integrations -> JazzCash Integration ID
+  easypaisaIntegrationID: 123123,  // From Dashboard select Developers -> Payment Integrations -> EasyPaisa Integration ID
   integrationID: 123456, // from dashboard Select Developers -> Payment Integrations -> Online Card ID 
   iFrameID: 123456, // from paymob Select Developers -> iframes 
 );
@@ -29,9 +31,11 @@ PaymobPayment.instance.initialize(
 > Create your own  
 > if you want to create different iFrames or integrations
 ```dart
-final PaymobPayment paymobPayment = PaymobPayment();
-  paymobPayment.initialize(
+final PaymobPakistan paymobPakistan = PaymobPakistan();
+  paymobPakistan.initialize(
   apiKey: "", 
+  jazzcashIntegrationId: 123123, 
+  easypaisaIntegrationID: 123123,  
   integrationID: 123456, 
   iFrameID: 123456, 
 );
@@ -40,10 +44,11 @@ final PaymobPayment paymobPayment = PaymobPayment();
 ## :bookmark: Usage
 
 ```dart
-final PaymobResponse? response = await PaymobPayment.instance.pay(
+final PaymobResponse? response = await PaymobPakistan.instance.pay(
   context: context,
   currency: "EGP",
-  amountInCents: "20000", // 200 EGP
+  paymentType: PaymentType.card, // or you can User paymentType: PaymentType.jazzcash OR PaymentType.easypaisa
+  amountInCents: "50000", // 500 PKR
   onPayment: (response) => setState(() => this.response = response), // Optional
 )
 ```
@@ -66,8 +71,10 @@ final PaymobResponse? response = await PaymobPayment.instance.pay(
 |--------------|------------------|
 | Card Number  | 5123456789012346 |
 | Expiry Month | 12               |
-| Expiry Year  | 30               |
+| Expiry Year  | 25               |
 | CVV          | 123              |
+| Name         | Test Account     |
+
 
 #### :negative_squared_cross_mark: Declined payment
 

@@ -1,6 +1,6 @@
 name: paymob_pakistan
 description: Easily accept Jazzcash/Easypaisa/Card Payments through Paymob in your Flutter app.
-version: 1.0.4
+version: 1.0.3
 homepage: https://github.com/arshmancodes/paymob_pakistan
 repository: https://github.com/arshmancodes/paymob_pakistan
 

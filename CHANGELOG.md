@@ -9,6 +9,4 @@
 
 ## 1.0.3
 - Improved the Documentation and mentioned the Paymob Registration link.
-
-## 1.0.4
 - Formatted Dart Code according to Dart Standards.

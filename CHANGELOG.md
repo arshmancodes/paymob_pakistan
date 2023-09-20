@@ -1,5 +1,8 @@
-## 0.0.1+1
-- Add PaymobBillingData Constructor
+## 1.0.0
+- Added PaymobPakistan Plugin to accept Card payments in Pakistan
 
-## 0.0.1
-- Implement Online cards payment. 
+## 1.0.1
+- Added Jazzcash and Easypaisa Support for PayMob Pakistan
+
+## 1.0.2
+- Improved Imports

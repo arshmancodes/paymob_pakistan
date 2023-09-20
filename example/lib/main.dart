@@ -3,7 +3,7 @@ import 'package:paymob_pakistan/paymob_payment.dart';
 
 void main() {
   // Testing info do not use in your app
-  PaymobPayment.instance.initialize(
+  PaymobPakistan.instance.initialize(
     apiKey:
         "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2libUZ0WlNJNkltbHVhWFJwWVd3aUxDSndjbTltYVd4bFgzQnJJam8yT1RBMk56VjkuX3lZTklHVGkwVXBLTmVzdjh0Q0dxc0ZlTmVkNnJobGFid2RoUXlJNFFuMlBUZ2k1Q3VyaGFxbmt2SGlrbXo1enBzaUdxYmhiU0pDU3VCTzA4bGxpcFE=",
     integrationID: 3364826,
@@ -73,7 +73,7 @@ class _PaymentViewState extends State<PaymentView> {
               ),
             ElevatedButton(
               child: const Text('Pay for 200 EGP'),
-              onPressed: () => PaymobPayment.instance.pay(
+              onPressed: () => PaymobPakistan.instance.pay(
                 context: context,
                 currency: "EGP",
                 amountInCents: "20000",

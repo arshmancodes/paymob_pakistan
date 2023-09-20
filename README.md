@@ -1,6 +1,6 @@
 # paymob_pakistan
 
-Easily accept payments through Online Cards in your Flutter app with Paymob.
+Easily accept Jazzcash/Easypaisa/Card Payments through Paymob in your Flutter app.
 
 ![Example](https://github.com/AhmedAbogameel/paymob_payment/blob/master/example.gif)
 

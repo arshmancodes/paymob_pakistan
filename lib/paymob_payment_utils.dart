@@ -6,8 +6,8 @@ enum PaymentType {
   jazzcash,
 }
 
-class PaymobPayment {
-  static PaymobPayment instance = PaymobPayment();
+class PaymobPakistan {
+  static PaymobPakistan instance = PaymobPakistan();
 
   bool _isInitialized = false;
 

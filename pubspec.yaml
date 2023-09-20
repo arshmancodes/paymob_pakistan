@@ -1,8 +1,8 @@
-name: paymob_payment
+name: paymob_pakistan
 description: Easily accept payments through Online Cards in your Flutter app with Paymob.
-version: 0.0.1+1
-homepage: https://github.com/AhmedAbogameel/paymob_payment
-repository: https://github.com/AhmedAbogameel/paymob_payment
+version: 1.0.0
+homepage: https://github.com/arshmancodes/paymob_pakistan
+repository: https://github.com/arshmancodes/paymob_pakistan
 
 environment:
   sdk: '>=3.0.2 <4.0.0'

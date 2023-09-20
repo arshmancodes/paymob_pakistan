@@ -1,4 +1,4 @@
-# paymob_payment
+# paymob_pakistan
 
 Easily accept payments through Online Cards in your Flutter app with Paymob.
 

@@ -1,6 +1,6 @@
 # paymob_pakistan
 
-Easily accept Jazzcash/Easypaisa/Card Payments through Paymob in your Flutter app.
+Easily accept Jazzcash/Easypaisa/Card Payments through [Paymob Pakistan](https://paymob.pk) in your Flutter app.
 
 <!-- ![Example](https://github.com/AhmedAbogameel/paymob_payment/blob/master/example.gif) -->
 
@@ -86,7 +86,7 @@ Change cvv to 111 or expiry year to 20
 
 > :pushpin: Note :
 > 
-> Visit https://paymob.pk to get your PayMob account for accepting Digital Payments on your Flutter Application.
+> Visit [Paymob Pakistan](https://paymob.pk) to get your PayMob account for accepting Digital Payments on your Flutter Application.
 > May be you have to contact paymob support to activate your test card 
 
 

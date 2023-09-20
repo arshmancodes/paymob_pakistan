@@ -2,7 +2,7 @@
 
 Easily accept Jazzcash/Easypaisa/Card Payments through Paymob in your Flutter app.
 
-![Example](https://github.com/AhmedAbogameel/paymob_payment/blob/master/example.gif)
+<!-- ![Example](https://github.com/AhmedAbogameel/paymob_payment/blob/master/example.gif) -->
 
 ## :rocket: Installation
 

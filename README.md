@@ -80,8 +80,13 @@ final PaymobResponse? response = await PaymobPakistan.instance.pay(
 
 Change cvv to 111 or expiry year to 20
 
+##  Credits
+
+> All API Credits goes to [Paymob Pakistan](https://paymob.pk)
+
 > :pushpin: Note :
 > 
 > Visit https://paymob.pk to get your PayMob account for accepting Digital Payments on your Flutter Application.
 > May be you have to contact paymob support to activate your test card 
+
 

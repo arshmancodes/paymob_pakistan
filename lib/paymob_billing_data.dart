@@ -48,5 +48,4 @@ class PaymobBillingData {
       "shipping_method": shippingMethod ?? "NA",
     };
   }
-
 }

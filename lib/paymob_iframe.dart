@@ -67,10 +67,10 @@ class _PaymobIFrameState extends State<PaymobIFrame> {
               child: CircularProgressIndicator.adaptive(),
             )
           : SafeArea(
-            child: WebViewWidget(
+              child: WebViewWidget(
                 controller: controller!,
               ),
-          ),
+            ),
     );
   }
 

@@ -78,7 +78,8 @@ class _PaymentViewState extends State<PaymentView> {
                 currency: "EGP",
                 amountInCents: "20000",
                 paymentType: PaymentType.jazzcash,
-                onPayment: (response) => setState(() => this.response = response),
+                onPayment: (response) =>
+                    setState(() => this.response = response),
               ),
             )
           ],

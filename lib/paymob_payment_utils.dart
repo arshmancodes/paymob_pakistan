@@ -50,7 +50,8 @@ class PaymobPakistan {
     _cardIntegrationID = integrationID;
     _mobileAccountiFrame = "https://pakistan.paymob.com/iframe/";
     _iFrameID = iFrameID;
-    _iFrameURL = 'https://pakistan.paymob.com/api/acceptance/iframes//$_iFrameID?payment_token=';
+    _iFrameURL =
+        'https://pakistan.paymob.com/api/acceptance/iframes//$_iFrameID?payment_token=';
 
     _isInitialized = true;
     _userTokenExpiration = userTokenExpiration;
@@ -154,7 +155,8 @@ class PaymobPakistan {
       /// The billing data related to the customer related to this payment.
       PaymobBillingData? billingData}) async {
     if (!_isInitialized) {
-      throw Exception('PaymobPayment is not initialized call:`PaymobPayment.instance.initialize`');
+      throw Exception(
+          'PaymobPayment is not initialized call:`PaymobPayment.instance.initialize`');
     }
     final authToken = await _getAuthToken();
     final orderID = await _addOrder(

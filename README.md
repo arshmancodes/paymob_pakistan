@@ -46,7 +46,7 @@ final PaymobPakistan paymobPakistan = PaymobPakistan();
 ```dart
 final PaymobResponse? response = await PaymobPakistan.instance.pay(
   context: context,
-  currency: "EGP",
+  currency: "PKR",
   paymentType: PaymentType.card, // or you can User paymentType: PaymentType.jazzcash OR PaymentType.easypaisa
   amountInCents: "50000", // 500 PKR
   onPayment: (response) => setState(() => this.response = response), // Optional

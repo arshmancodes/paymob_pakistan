@@ -13,3 +13,6 @@
 
 ## 1.0.4
 - Minor Documentation Improvements.
+
+## 1.0.5
+- Minor Variable Declarations and API Improvements.

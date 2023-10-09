@@ -4,12 +4,11 @@ import 'package:paymob_pakistan/paymob_payment.dart';
 void main() {
   // Testing info do not use in your app
   PaymobPakistan.instance.initialize(
-    apiKey:
-        "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2libUZ0WlNJNkltbHVhWFJwWVd3aUxDSndjbTltYVd4bFgzQnJJam8yT1RBMk56VjkuX3lZTklHVGkwVXBLTmVzdjh0Q0dxc0ZlTmVkNnJobGFid2RoUXlJNFFuMlBUZ2k1Q3VyaGFxbmt2SGlrbXo1enBzaUdxYmhiU0pDU3VCTzA4bGxpcFE=",
-    integrationID: 3364826,
-    iFrameID: 728907,
-    jazzcashIntegrationId: 23421,
-    easypaisaIntegrationID: 123123,
+    apiKey: "API KEY HERE",
+    integrationID: 789098,
+    iFrameID: 546789,
+    jazzcashIntegrationId: 546789,
+    easypaisaIntegrationID: 345676,
   );
   runApp(const MyApp());
 }
@@ -71,16 +70,53 @@ class _PaymentViewState extends State<PaymentView> {
                   const SizedBox(height: 16),
                 ],
               ),
-            ElevatedButton(
-              child: const Text('Pay for 200 EGP'),
-              onPressed: () => PaymobPakistan.instance.pay(
-                context: context,
-                currency: "EGP",
-                amountInCents: "20000",
-                paymentType: PaymentType.jazzcash,
-                onPayment: (response) =>
-                    setState(() => this.response = response),
-              ),
+            Column(
+              children: [
+                ElevatedButton(
+                  child: const Text('Pay with Jazzcash'),
+                  onPressed: () => PaymobPakistan.instance.pay(
+                    context: context,
+                    currency: "PKR",
+                    amountInCents: "100",
+                    paymentType: PaymentType.jazzcash,
+                    onPayment: (response) => setState(() => this.response = response),
+                  ),
+                ),
+                ElevatedButton(
+                  child: const Text('Pay with Easypaisa'),
+                  onPressed: () => PaymobPakistan.instance.pay(
+                    context: context,
+                    currency: "PKR",
+                    amountInCents: "100",
+                    billingData: PaymobBillingData(
+                        email: "test@test.com",
+                        firstName: "Arshman",
+                        lastName: "Afzal",
+                        phoneNumber: "+921234567890",
+                        apartment: "NA",
+                        building: "NA",
+                        city: "NA",
+                        country: "Pakistan",
+                        floor: "NA",
+                        postalCode: "NA",
+                        shippingMethod: "Online",
+                        state: "NA",
+                        street: "NA"),
+                    paymentType: PaymentType.easypaisa,
+                    onPayment: (response) => setState(() => this.response = response),
+                  ),
+                ),
+                ElevatedButton(
+                  child: const Text('Pay with Card'),
+                  onPressed: () => PaymobPakistan.instance.pay(
+                    context: context,
+                    currency: "PKR",
+                    amountInCents: "100",
+                    paymentType: PaymentType.card,
+                    onPayment: (response) => setState(() => this.response = response),
+                  ),
+                ),
+              ],
             )
           ],
         ),

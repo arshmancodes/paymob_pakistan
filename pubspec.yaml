@@ -9,8 +9,8 @@ environment:
   flutter: ">=3.3.0"
 
 dependencies:
-  dio: ^5.2.1+1
-  webview_flutter: ^4.2.2
+  dio: ^5.3.3
+  webview_flutter: ^4.4.1
 
   flutter:
     sdk: flutter

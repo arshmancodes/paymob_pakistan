@@ -3,8 +3,8 @@ part of 'paymob_payment.dart';
 class PaymobIFrame extends StatefulWidget {
   const PaymobIFrame({
     Key? key,
-    required this.redirectURL,
     this.onPayment,
+    required this.redirectURL,
   }) : super(key: key);
 
   final String redirectURL;
@@ -43,7 +43,7 @@ class _PaymobIFrameState extends State<PaymobIFrame> {
             if (request.url.contains('txn_response_code') &&
                 request.url.contains('success') &&
                 request.url.contains('id')) {
-              final params = _getParamFromURL(request.url);
+              final params = Uri.parse(request.url).queryParameters;
               final response = PaymobResponse.fromJson(params);
               if (widget.onPayment != null) {
                 widget.onPayment!(response);
@@ -72,14 +72,5 @@ class _PaymobIFrameState extends State<PaymobIFrame> {
               ),
             ),
     );
-  }
-
-  Map<String, dynamic> _getParamFromURL(String url) {
-    final uri = Uri.parse(url);
-    Map<String, dynamic> data = {};
-    uri.queryParameters.forEach((key, value) {
-      data[key] = value;
-    });
-    return data;
   }
 }

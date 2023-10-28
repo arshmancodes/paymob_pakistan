@@ -1,51 +1,59 @@
 part of 'paymob_payment.dart';
 
+/// [PaymobBillingData] represent user's billing details
 class PaymobBillingData {
+  /// user info
   String? email;
   String? firstName;
   String? lastName;
   String? phoneNumber;
-  String? apartment;
+
+  /// user address
   String? floor;
   String? street;
   String? building;
-  String? postalCode;
+  String? apartment;
+  
+  /// user location
   String? city;
   String? state;
   String? country;
+  String? postalCode;
+
+  /// [shippingMethod]
   String? shippingMethod;
 
   PaymobBillingData({
+    this.city,
+    this.floor,
     this.email,
+    this.state,
+    this.street,
+    this.country,
     this.firstName,
     this.lastName,
-    this.phoneNumber,
-    this.apartment,
-    this.floor,
-    this.street,
     this.building,
+    this.apartment,
     this.postalCode,
-    this.city,
-    this.state,
-    this.country,
+    this.phoneNumber,
     this.shippingMethod,
   });
 
   Map<String, dynamic> toJson() {
     return {
-      "email": email ?? "Unknown",
-      "first_name": firstName ?? "Unknown",
-      "last_name": lastName ?? "Unknown",
-      "phone_number": phoneNumber ?? "Unknown",
-      "apartment": apartment ?? "NA",
-      "floor": floor ?? "NA",
-      "building": building ?? "NA",
-      "street": street ?? "NA",
-      "postal_code": postalCode ?? "NA",
-      "city": city ?? "NA",
-      "state": state ?? "NA",
-      "country": country ?? "NA",
-      "shipping_method": shippingMethod ?? "NA",
+      'city': city ?? 'NA',
+      'floor': floor ?? 'NA',
+      'state': state ?? 'NA',
+      'street': street ?? 'NA',
+      'country': country ?? 'NA',
+      'email': email ?? 'Unknown',
+      'building': building ?? 'NA',
+      'apartment': apartment ?? 'NA',
+      'postal_code': postalCode ?? 'NA',
+      'first_name': firstName ?? 'Unknown',
+      'last_name': lastName ?? 'Unknown',
+      'phone_number': phoneNumber ?? 'Unknown',
+      'shipping_method': shippingMethod ?? 'NA',
     };
   }
 }

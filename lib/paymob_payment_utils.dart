@@ -103,7 +103,7 @@ class PaymobPakistan {
     _easypaisaIntegrationID = easypaisaIntegrationID;
     _mobileAccountiFrame = 'https://pakistan.paymob.com/iframe/';
     _iFrameURL =
-        'https://pakistan.paymob.com/api/acceptance/iframe/$_iFrameID?token=';
+        'https://pakistan.paymob.com/api/acceptance/iframes//$_iFrameID?payment_token=';
 
     /// _dio.options.validateStatus = (status) => true;
 

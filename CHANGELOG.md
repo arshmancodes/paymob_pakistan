@@ -16,3 +16,7 @@
 
 ## 1.0.5
 - Minor Variable Declarations and API Improvements.
+
+## 1.1.0
+- Update deprecated API's and add better documentation for public apis
+- New API's reference https://docs.paymob.pk/docs/accept-standard-redirect

@@ -9,7 +9,7 @@ Easily accept Jazzcash/Easypaisa/Card Payments through [Paymob Pakistan](https:/
 Add this to `dependencies` in your app's `pubspec.yaml`
 
 ```yaml
-paymob_pakistan : latest_version
+paymob_pakistan : ^1.1.0
 ```
 
 ## :hammer: Initialization
@@ -21,23 +21,6 @@ PaymobPakistan.instance.initialize(
   easypaisaIntegrationID: 123123,  // From Dashboard select Developers -> Payment Integrations -> EasyPaisa Integration ID
   integrationID: 123456, // from dashboard Select Developers -> Payment Integrations -> Online Card ID 
   iFrameID: 123456, // from paymob Select Developers -> iframes 
-);
-```
-
-> :pushpin: Note :
->
-> You can use this singleton (instance) 
-> or 
-> Create your own  
-> if you want to create different iFrames or integrations
-```dart
-final PaymobPakistan paymobPakistan = PaymobPakistan();
-  paymobPakistan.initialize(
-  apiKey: "", 
-  jazzcashIntegrationId: 123123, 
-  easypaisaIntegrationID: 123123,  
-  integrationID: 123456, 
-  iFrameID: 123456, 
 );
 ```
 
@@ -88,5 +71,3 @@ Change cvv to 111 or expiry year to 20
 > 
 > Visit [Paymob Pakistan](https://paymob.pk) to get your PayMob account for accepting Digital Payments on your Flutter Application.
 > May be you have to contact paymob support to activate your test card 
-
-

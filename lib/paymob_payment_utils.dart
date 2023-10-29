@@ -54,10 +54,10 @@ class PaymobPakistan {
 
   /// [userTokenExpiration] - Expiration time of the payment token in seconds (default is 3600 seconds).
   late int _userTokenExpiration;
-  
+
   /// [_jazzcashIntegrationID] - JazzCash Integration ID.
   late int _jazzcashIntegrationID;
-  
+
   /// [_easypaisaIntegrationID] - JazzCash Integration ID.
   late int _easypaisaIntegrationID;
 
@@ -114,6 +114,15 @@ class PaymobPakistan {
     return _isInitialized;
   }
 
+  /// Get payment integration id using [PaymentType]
+  int? _getIntegrationId(PaymentType paymentType) {
+    return {
+      PaymentType.card: _cardIntegrationID,
+      PaymentType.jazzcash: _jazzcashIntegrationID,
+      PaymentType.easypaisa: _easypaisaIntegrationID,
+    }[paymentType];
+  }
+
   /// Get authentication token,
   /// which is valid for one hour from the creation time.
   Future<String> _getAuthToken() async {
@@ -125,8 +134,18 @@ class PaymobPakistan {
         },
       );
       return response.data['token'];
+    } on DioException catch (e) {
+      throw PaymobApiException(
+        error: e.message,
+        function: '_getAuthToken',
+        statusCode: e.response?.statusCode,
+        message: e.response?.data['detail'],
+      );
     } catch (e) {
-      rethrow;
+      throw PaymobApiException(
+        error: e.toString(),
+        function: '_getAuthToken',
+      );
     }
   }
 
@@ -151,8 +170,18 @@ class PaymobPakistan {
         },
       );
       return response.data['id'];
+    } on DioException catch (e) {
+      throw PaymobApiException(
+        error: e.message,
+        function: '_addOrder',
+        statusCode: e.response?.statusCode,
+        message: e.response?.data['detail'],
+      );
     } catch (e) {
-      rethrow;
+      throw PaymobApiException(
+        error: e.toString(),
+        function: '_addOrder',
+      );
     }
   }
 
@@ -167,35 +196,38 @@ class PaymobPakistan {
     required PaymentType paymentType,
     required PaymobBillingData billingData,
   }) async {
-    final response = await _dio.post(
-      'acceptance/payment_keys',
-      data: {
-        'currency': currency,
-        'auth_token': authToken,
-        'order_id': orderID.toString(),
-        'lock_order_when_paid': 'false',
-        'amount_cents': int.parse(amount),
-        'expiration': _userTokenExpiration,
-        'billing_data': billingData.toJson(),
-        'integration_id': _getIntegrationId(paymentType),
-      },
-    );
-    final message = response.data['message'];
-    if (message != null) {
-      throw Exception(message);
+    try {
+      final response = await _dio.post(
+        'acceptance/payment_keys',
+        data: {
+          'currency': currency,
+          'auth_token': authToken,
+          'order_id': orderID.toString(),
+          'lock_order_when_paid': 'false',
+          'amount_cents': int.parse(amount),
+          'expiration': _userTokenExpiration,
+          'billing_data': billingData.toJson(),
+          'integration_id': _getIntegrationId(paymentType),
+        },
+      );
+      final message = response.data['message'];
+      if (message != null) {
+        throw Exception(message);
+      }
+      return response.data['token'];
+    } on DioException catch (e) {
+      throw PaymobApiException(
+        error: e.message,
+        function: '_getPurchaseToken',
+        statusCode: e.response?.statusCode,
+        message: e.response?.data['detail'],
+      );
+    } catch (e) {
+      throw PaymobApiException(
+        error: e.toString(),
+        function: '_getPurchaseToken',
+      );
     }
-    return response.data['token'];
-  }
-
-  /// Get payment integration id using [PaymentType]
-  int? _getIntegrationId(PaymentType paymentType){
-    return (paymentType == PaymentType.card)
-            ? _cardIntegrationID
-            : (paymentType == PaymentType.easypaisa)
-                ? _easypaisaIntegrationID
-                : (paymentType == PaymentType.jazzcash)
-                    ? _jazzcashIntegrationID
-                    : null;
   }
 
   /// Pay for an order with the specified payment type.

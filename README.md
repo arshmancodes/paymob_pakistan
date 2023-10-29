@@ -24,6 +24,23 @@ PaymobPakistan.instance.initialize(
 );
 ```
 
+> :pushpin: Note :
+>
+> You can use this singleton (instance) 
+> or 
+> Create your own  
+> if you want to create different iFrames or integrations
+```dart
+final PaymobPakistan paymobPakistan = PaymobPakistan();
+  paymobPakistan.initialize(
+  apiKey: "", 
+  jazzcashIntegrationId: 123123, 
+  easypaisaIntegrationID: 123123,  
+  integrationID: 123456, 
+  iFrameID: 123456, 
+);
+```
+
 ## :bookmark: Usage
 
 ```dart

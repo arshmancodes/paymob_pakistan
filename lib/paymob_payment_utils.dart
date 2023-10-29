@@ -20,11 +20,8 @@ enum PaymentType {
 
 /// [PaymobPakistan] accept Jazzcash/Easypaisa/Card Payments.
 class PaymobPakistan {
-  /// [PaymobPakistan] private constructor
-  PaymobPakistan._();
-
-  /// Singleton class [PaymobPakistan] get [instance]
-  static final PaymobPakistan instance = PaymobPakistan._();
+  /// class [PaymobPakistan] get [instance]
+  static final PaymobPakistan instance = PaymobPakistan();
 
   /// Whether [instance] of [PaymobPakistan] initialized or not
   bool _isInitialized = false;
@@ -33,7 +30,7 @@ class PaymobPakistan {
   final _dio = Dio(
     BaseOptions(
       /// [baseUrl] - for all api calls
-      baseUrl: 'https://accept.paymobsolutions.com/api/',
+      baseUrl: 'https://pakistan.paymob.com/api/',
 
       /// [headers] - for all api calls
       headers: {'Content-Type': 'application/json'},

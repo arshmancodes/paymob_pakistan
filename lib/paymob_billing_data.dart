@@ -13,7 +13,7 @@ class PaymobBillingData {
   String? street;
   String? building;
   String? apartment;
-  
+
   /// user location
   String? city;
   String? state;

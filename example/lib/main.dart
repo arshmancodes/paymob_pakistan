@@ -79,7 +79,8 @@ class _PaymentViewState extends State<PaymentView> {
                     currency: "PKR",
                     amountInCents: "100",
                     paymentType: PaymentType.jazzcash,
-                    onPayment: (response) => setState(() => this.response = response),
+                    onPayment: (response) =>
+                        setState(() => this.response = response),
                   ),
                 ),
                 ElevatedButton(
@@ -103,7 +104,8 @@ class _PaymentViewState extends State<PaymentView> {
                         state: "NA",
                         street: "NA"),
                     paymentType: PaymentType.easypaisa,
-                    onPayment: (response) => setState(() => this.response = response),
+                    onPayment: (response) =>
+                        setState(() => this.response = response),
                   ),
                 ),
                 ElevatedButton(
@@ -113,7 +115,8 @@ class _PaymentViewState extends State<PaymentView> {
                     currency: "PKR",
                     amountInCents: "100",
                     paymentType: PaymentType.card,
-                    onPayment: (response) => setState(() => this.response = response),
+                    onPayment: (response) =>
+                        setState(() => this.response = response),
                   ),
                 ),
               ],

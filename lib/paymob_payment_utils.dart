@@ -134,29 +134,19 @@ class PaymobPakistan {
 
   /// Proceed to pay with only calling this function.
   /// Opens a WebView at Paymob redirectedURL to accept user payment info.
-  Future<PaymobResponse?> pay(
-      {
-      /// BuildContext for navigation to WebView
-      required BuildContext context,
 
-      /// Which Currency you would pay in.
-      required String currency,
+  // ... (existing code)
 
-      /// Payment amount in cents EX: 20000 is an 200 EGP
-      required String amountInCents,
-
-      /// Optional Callback if you can use return result of pay function or use this callback
-      void Function(PaymobResponse response)? onPayment,
-      required PaymentType paymentType,
-
-      /// list of json objects contains the contents of the purchase.
-      List? items,
-
-      /// The billing data related to the customer related to this payment.
-      PaymobBillingData? billingData}) async {
+  /// First step: Get authToken and orderId
+  Future<PaymentInitializationResult> initializePayment({
+    required String currency,
+    required String amountInCents,
+    List? items,
+  }) async {
     if (!_isInitialized) {
-      throw Exception('PaymobPayment is not initialized call:`PaymobPayment.instance.initialize`');
+      throw Exception('PaymobPayment is not initialized. Call:`PaymobPayment.instance.initialize`');
     }
+
     final authToken = await _getAuthToken();
     final orderID = await _addOrder(
       authToken: authToken,
@@ -165,19 +155,21 @@ class PaymobPakistan {
       items: items ?? [],
     );
 
-    // switch (paymentType) {
-    //   case PaymentType.card:
-    //     break;
+    return PaymentInitializationResult(authToken, orderID);
+  }
 
-    //   case PaymentType.easypaisa:
-    //     break;
-
-    //   case PaymentType.jazzcash:
-    //     break;
-
-    //   default:
-    //     throw Exception("Please Select a Payment Type in Order to Continue");
-    // }
+  /// Second step: Make the payment
+  Future<PaymobResponse?> makePayment(
+    BuildContext context, {
+    required String currency,
+    required String amountInCents,
+    void Function(PaymobResponse response)? onPayment,
+    required PaymentType paymentType,
+    List? items,
+    PaymobBillingData? billingData,
+    required String authToken,
+    required int orderID,
+  }) async {
     final purchaseToken = await _getPurchaseToken(
       authToken: authToken,
       currency: currency,
@@ -186,6 +178,7 @@ class PaymobPakistan {
       amount: amountInCents,
       billingData: billingData ?? PaymobBillingData(),
     );
+
     if (context.mounted) {
       if (paymentType == PaymentType.card) {
         final response = await PaymobIFrame.show(
@@ -205,4 +198,11 @@ class PaymobPakistan {
     }
     return null;
   }
+}
+
+class PaymentInitializationResult {
+  final String authToken;
+  final int orderID;
+
+  PaymentInitializationResult(this.authToken, this.orderID);
 }

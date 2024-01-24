@@ -19,3 +19,6 @@
 
 ## 1.0.6
 - Alerting the User if he tries to abandon the payment procedure in progress.
+
+## 1.0.7
+- The user now needs to perform the transaction in two steps in order to get the Order ID And Auth token  beefore processing the payment for storing the transaction data in database.

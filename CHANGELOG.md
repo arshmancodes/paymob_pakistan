@@ -16,3 +16,6 @@
 
 ## 1.0.5
 - Minor Variable Declarations and API Improvements.
+
+## 1.0.6
+- Alerting the User if he tries to abandon the payment procedure in progress.

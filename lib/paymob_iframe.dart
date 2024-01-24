@@ -40,9 +40,7 @@ class _PaymobIFrameState extends State<PaymobIFrame> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.contains('txn_response_code') &&
-                request.url.contains('success') &&
-                request.url.contains('id')) {
+            if (request.url.contains('txn_response_code') && request.url.contains('success') && request.url.contains('id')) {
               final params = _getParamFromURL(request.url);
               final response = PaymobResponse.fromJson(params);
               if (widget.onPayment != null) {
@@ -61,16 +59,53 @@ class _PaymobIFrameState extends State<PaymobIFrame> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: controller == null
-          ? const Center(
-              child: CircularProgressIndicator.adaptive(),
-            )
-          : SafeArea(
-              child: WebViewWidget(
-                controller: controller!,
+    return WillPopScope(
+      onWillPop: () async {
+        // Custom logic, such as showing a confirmation dialog
+        bool? shouldPop = await showExitConfirmationDialog(context);
+        if (shouldPop == null) {
+          return false;
+        } else {
+          return shouldPop;
+        }
+      },
+      child: Scaffold(
+        body: controller == null
+            ? const Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+            : SafeArea(
+                child: WebViewWidget(
+                  controller: controller!,
+                ),
               ),
+      ),
+    );
+  }
+
+  Future<bool?> showExitConfirmationDialog(BuildContext context) async {
+    return await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Cancel Transaction?'),
+          content: Text('Are you sure you want to abandon the Transaction? You might loose your funds if you already made a payment.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false); // User does not want to exit
+              },
+              child: Text('No'),
             ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(true); // User wants to exit
+              },
+              child: Text('Yes'),
+            ),
+          ],
+        );
+      },
     );
   }
 
